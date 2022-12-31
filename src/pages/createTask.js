@@ -8,7 +8,6 @@ const options = ["1", "2", "3"];
 
 const CreateTask = () => {
   const [users] = useFetchData();
-  console.log(users);
   const [message, setMessage] = useState("");
   const [value, onChange] = useState(new Date());
   const [selected, setSelected] = useState(options[0]);

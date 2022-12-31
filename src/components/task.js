@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Modal from "../utils/modal";
 import DeleteBtn from "./deleteBtn";
-const Task = ({ data }) => {
-  console.log(data);
+const Task = ({ data, cssClass }) => {
   return (
     <>
       <li
-        className="relative flex items-center justify-between px-2 py-6 border-b shadow-xl hover:bg-gray-200  left-0 right-0 mx-auto"
+        className={`relative flex items-center justify-between px-2 py-6 border-b shadow-xl hover:bg-gray-200  left-0 right-0 mx-auto ${cssClass}`}
         key={data.id}
       >
         <div>

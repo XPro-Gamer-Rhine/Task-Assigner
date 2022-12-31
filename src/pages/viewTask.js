@@ -28,7 +28,7 @@ const ViewTask = () => {
             }
           })
           .map((task, id) => {
-            return <Task data={task} />;
+            return <Task data={task} cssClass="w-1/3" />;
           })
       ) : (
         <div className="flex flex-row  justify-evenly">
