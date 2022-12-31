@@ -15,10 +15,10 @@ const useListTasks = () => {
       redirect: "follow",
     };
     fetch("https://devza.com/tests/tasks/list", requestOptions)
-      .then((response) => response.json())
-      .then((result) => setData(result.tasks))
+      .then((response) => response.json(), setLoading(true))
+      .then((result) => setData(result.tasks), setLoading(false))
       .catch((error) => setError(error));
-    if (data === undefined || data === null) {
+    if (data === undefined || data === null || data.length <= 0) {
       setLoading(true);
     } else {
       setLoading(false);
@@ -29,6 +29,7 @@ const useListTasks = () => {
       return new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
     })
     .reverse();
+
 
   useEffect(() => {
     handleListTask();

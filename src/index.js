@@ -10,13 +10,11 @@ import { NotificationContainer } from "react-notifications";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Navbar />
-      <NotificationContainer />
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Navbar />
+    <NotificationContainer />
+    <App />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
