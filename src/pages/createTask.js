@@ -14,19 +14,36 @@ const CreateTask = () => {
   const [selectedUser, setSelectedUser] = useState(users[0]);
   const [state, setState] = useState(false);
   const [handleCreateTask] = useCreateTask();
-
+  const [error, setError] = useState("");
   const handleSubmit = () => {
     let dateTime = new Date(value).toISOString();
     dateTime = dateTime.replace("T", " ");
     dateTime = dateTime.split(".")[0];
-    handleCreateTask(message, dateTime, selected, selectedUser);
-    setState(true);
+
+    if (message === undefined || message === null || message == "") {
+      setError("Message Can Not Be empty");
+    } else if (selected === undefined || selected === null || selected == "") {
+      setError("Priority Can Not Be null");
+    } else if (
+      selectedUser === undefined ||
+      selectedUser === null ||
+      selectedUser == ""
+    ) {
+      setError("User Can Not Be null");
+    } else {
+      handleCreateTask(message, dateTime, selected, selectedUser);
+      setState(true);
+      setMessage("");
+      setSelected(options[0]);
+      setSelectedUser(users[0]);
+    }
   };
 
   return (
     <div className="w-full max-w-3xl left-0 right-0 mx-auto">
       {state === true &&
         NotificationManager.success("Success message", "Created New Task")}
+      {error.length > 1 && NotificationManager.error(error)}
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label
@@ -41,6 +58,7 @@ const CreateTask = () => {
             type="text"
             placeholder="message"
             onChange={(e) => setMessage(e.target.value)}
+            value={message}
           />
         </div>
         <div className="mb-4">

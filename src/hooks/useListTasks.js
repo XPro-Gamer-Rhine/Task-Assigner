@@ -29,8 +29,6 @@ const useListTasks = () => {
       return new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
     })
     .reverse();
-
-
   useEffect(() => {
     handleListTask();
   }, [data]);

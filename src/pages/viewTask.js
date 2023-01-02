@@ -79,9 +79,11 @@ const ViewTask = () => {
       });
     }
   };
+
   useEffect(() => {
     getUserData();
   }, [loading]);
+
   return (
     <>
       <div className="relative w-1/3 left-0 right-0 mx-auto my-6">
